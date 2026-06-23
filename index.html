@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head >
+  <meta charset="UTF-8">
+  <title>Notion</title> <!-- عنوان صفحه در مرورگر-->
+  <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+<div class="app"> <!-- بخش اصلی برنامه-->
+
+  <!--نوار بالایی -->
+  <header class="topbar">
+    <div class="topbar-right">
+      <!-- دکمه منو برای صفحات کوچکتر) -->
+      <button id="mobileMenuBtn" class="btn ghost menu-toggle">☰</button>
+      <span class="logo">NoteBook</span> <!-- لوگوی برنامه -->
+    </div>
+    <div class="topbar-left">
+      <input id="searchInput" class="search-input" placeholder="جست و جو ..."> <!--جستجو -->
+      <select id="sortSelect" class="sort-select"> 
+        <option value="title-asc">مرتب‌سازی: عنوان (الفبا)</option>
+        <option value="title-desc">عنوان (معکوس)</option>
+        <option value="created-desc">جدیدترین</option>
+        <option value="created-asc">قدیمی‌ترین</option>
+        <option value="updated-desc">آخرین ویرایش</option>
+        <option value="updated-asc">اولین ویرایش</option>
+      </select>
+
+      <button id="exportBtn" class="btn secondary">خروجی JSON</button> 
+      <label for="importInput" class="btn secondary">ورودی JSON</label> 
+      <input type="file" id="importInput" accept="application/json" style="display:none"> <!-- فیلد مخفی برای آپلود فایل JSON -->
+
+      <button id="themeToggle" class="btn ghost">حالت تاریک</button> 
+    </div>
+  </header>
+
+  <div class="main"> 
+
+    <!--نوار کناری -->
+    <aside class="sidebar">
+      <div class="sidebar-section actions">
+        <button id="newNoteBtn" class="btn primary full">یادداشت جدید +</button> 
+        <button id="newFolderBtn" class="btn secondary full">پوشه جدید +</button> 
+      </div>
+
+      <!-- بخش پین‌شده‌ها -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">پین‌شده‌ها</div> 
+        <ul id="pinnedList" class="item-list"></ul> 
+      </div>
+
+      <!-- پوشه‌ها -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">پوشه‌ها</div> 
+        <ul id="foldersList" class="item-list"></ul> 
+      </div>
+
+      <!-- یادداشت‌ها -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">یادداشت‌ها</div> 
+        <ul id="notesList" class="item-list"></ul> 
+    </aside>
+
+    <!-- Editor-->
+    <main class="editor">
+        <div class="editor-header"> <!-- عنوان و دکمه‌ها -->
+        <input id="noteTitleInput" class="title-input" placeholder="عنوان یادداشت..." /> 
+        <div class="editor-header-actions"> <!-- دکمه‌های عملیاتی یادداشت -->
+            <button id="moveNoteBtn" class="btn secondary">انتقال به پوشه</button> 
+            <button id="deleteNoteBtn" class="btn primary">حذف یادداشت</button> 
+            <button id="pinToggleBtn" class="btn secondary" title="پین/حذف پین">📌</button> 
+    </div>
+
+
+      <!-- نوار ابزار برای استایل متن -->
+      <div class="toolbar">
+        <button data-md="bold" class="btn bold">B</button> 
+        <button data-md="italic" class="btn italic">I</button> 
+        <button data-md="underline" class="btn underline">U</button> 
+        <button data-md="ul" class="btn sm">•</button> 
+        <button data-md="ol" class="btn sm">.1</button>
+        <button data-md="h1" class="btn sm">Heading 1</button>
+        <button data-md="h2" class="btn sm">Heading 2</button> 
+        <button data-md="link" class="btn sm">link</button> 
+        <button data-md="code" class="btn sm">code</button> 
+        <button data-md="codeblock" class="btn sm">codeblock</button> 
+
+      <div class="editor-body"> <!-- ادیتور و پیش‌نمایش -->
+        <textarea id="noteContentInput" class="note-textarea"
+                  placeholder="متن یادداشت را با Markdown بنویسید..."></textarea> <!-- نوشتن متن یادداشت -->
+
+        <section class="preview-section"> <!-- بخش پیش‌نمایش -->
+          <div class="preview-header">
+            <span>پیش‌نمایش</span> <!-- عنوان پیش‌نمایش -->
+            <span id="autosaveStatus" class="autosave-status">ذخیره شده</span> <!-- وضعیت ذخیره‌سازی خودکار -->
+          </div>
+          <div id="previewArea" class="preview"></div> <!-- ناحیه نمایش پیش‌نمایش مارک‌داون -->
+        </section>
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<div id="sidebarOverlay" class="sidebar-overlay"></div> <!-- لایه پوششی برای سایدبار در حالت موبایل -->
+<script src="app.js"></script> 
+</body>
+</html>
