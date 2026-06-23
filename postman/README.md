@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Then open the local URL printed by Vite, usually `http://localhost:5173`.
+Then open the local URL printed by Vite, usually `http:/localhost:5173`.
 
 ## Build
 
@@ -69,12 +69,3 @@ src/
 - Import/export collections as JSON
 - Multi-tab support with independent request data per tab
 
-## Submission name
-
-Rename the final zip file to:
-
-```text
-WP-HW2-[STDID].zip
-```
-
-Replace `[STDID]` with your student number.
